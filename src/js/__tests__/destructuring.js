@@ -30,4 +30,3 @@ test('should destructuring stats without description', () => {
   ];
   expect(received).toEqual(expected);
 });
-
