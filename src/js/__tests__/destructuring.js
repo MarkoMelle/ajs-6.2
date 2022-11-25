@@ -2,31 +2,39 @@ import destrStats from '../destructuring';
 
 test('should destructuring stats with a description', () => {
   const received = destrStats({
-    id: 8,
-    name: 'Двойной выстрел',
-    icon: 'http://...',
-    description: 'Двойной выстрел наносит двойной урон',
+    special: [
+      {
+        id: 8,
+        name: 'Двойной выстрел',
+        icon: 'http://...',
+        description: 'Двойной выстрел наносит двойной урон',
+      },
+      {
+        id: 9,
+        name: 'Нокаутирующий удар',
+        icon: 'http://...',
+      },
+    ],
   });
   const expected = [
-    8,
-    'Двойной выстрел',
-    'http://...',
-    'Двойной выстрел наносит двойной урон',
+    {
+      id: 8,
+      name: 'Двойной выстрел',
+      icon: 'http://...',
+      description: 'Двойной выстрел наносит двойной урон',
+    },
+    {
+      id: 9,
+      name: 'Нокаутирующий удар',
+      icon: 'http://...',
+      description: 'Описание недоступно',
+    },
   ];
   expect(received).toEqual(expected);
 });
 
 test('should destructuring stats without description', () => {
-  const received = destrStats({
-    id: 8,
-    name: 'Двойной выстрел',
-    icon: 'http://...',
-  });
-  const expected = [
-    8,
-    'Двойной выстрел',
-    'http://...',
-    'Описание недоступно',
-  ];
+  const received = destrStats({ special: [] });
+  const expected = [];
   expect(received).toEqual(expected);
 });
